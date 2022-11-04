@@ -47,10 +47,21 @@ app.get('/api/persons/:id', (request, response) => {
 
 app.post('/api/persons/', (request, response) => {
   const person = request.body
+
+  if (!person.name || !person.number) {
+    return response.status(400).json({
+      error: 'content missing'
+    })
+  }
+
+  if (persons.some(n => n.name === person.name)) {
+    return response.status(400).json({
+      error: 'name must be unique'
+    })
+  }
+
   person.id = Math.round(Math.random() * 10**10)
-
   persons = persons.concat(person)
-
   response.json(person)
 })
 
