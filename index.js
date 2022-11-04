@@ -58,7 +58,7 @@ app.get('/api/persons/:id', (request, response) => {
 })
 
 app.post('/api/persons/', (request, response) => {
-  const person = request.body
+  const person = JSON.parse(JSON.stringify(request.body))
 
   if (!person.name || !person.number) {
     return response.status(400).json({
