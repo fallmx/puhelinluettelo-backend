@@ -58,7 +58,7 @@ app.get('/api/persons/:id', (request, response) => {
 })
 
 app.post('/api/persons/', (request, response) => {
-  const person = JSON.parse(JSON.stringify(request.body))
+  const person = request.body
 
   if (!person.name || !person.number) {
     return response.status(400).json({
@@ -72,9 +72,14 @@ app.post('/api/persons/', (request, response) => {
     })
   }
 
-  person.id = Math.round(Math.random() * 10**10)
-  persons = persons.concat(person)
-  response.json(person)
+  const newPerson = {
+    id: Math.round(Math.random() * 10**10),
+    name: person.name,
+    number: person.number
+  }
+
+  persons = persons.concat(newPerson)
+  response.json(newPerson)
 })
 
 app.delete('/api/persons/:id', (request, response) => {
