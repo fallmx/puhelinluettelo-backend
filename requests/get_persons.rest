@@ -1,1 +1,1 @@
-GET https://adorable-puce-crown.cyclic.app/api/persons
+GET http://localhost:3001/api/persons
