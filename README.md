@@ -1,1 +1,1 @@
-https://adorable-puce-crown.cyclic.app/api/persons
+https://adorable-puce-crown.cyclic.app/
